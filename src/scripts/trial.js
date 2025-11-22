@@ -32,7 +32,7 @@ const guideSteps = [
         title: 'Envie sua busca',
         content: `Clique no botão de enviar para processar sua solicitação. Nossa inteligência vai buscar as melhores vagas para você.`,
         highlightElement: '.send-btn',
-        position: 'send-side',
+        position: 'center',
         showArrow: false,
         action: 'send'
     },
