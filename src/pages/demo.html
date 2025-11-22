@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Demonstração da IA do Encaixa Vaga."/>
+    <title>Demo - Encaixa Vaga</title>
+    <link rel="icon" type="image/svg+xml" href="../../public/logo.svg" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/common.css" />
+    <link rel="stylesheet" href="../styles/trial.css" />
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <div class="header-title">
+                <img src="../../public/logo.svg" alt="Encaixa Vaga Logo" style="width: 32px; height: 32px; filter: invert(1);">
+                <h1>Inteligência Encaixa Vaga</h1>
+            </div>
+            <div class="tokens-info">
+                <span class="tokens-available">
+                    250 tokens
+                </span>
+                <button class="buy-tokens-btn">
+                    <i class="bi bi-plus-circle"></i>
+                    <span>Comprar mais</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="chat-box">
+            <div class="welcome-message" style="display: none;">
+                <div class="ai-avatar">
+                    <i class="bi bi-stars"></i>
+                </div>
+                <h2>Bem-vindo ao futuro da busca por vagas!</h2>
+                <p>Nossa inteligência está conectada às principais bases de dados do mercado, pronta para encontrar a oportunidade perfeita que combina com seu perfil. Vamos começar?</p>
+            </div>
+            
+            <div id="messagesContainer" class="messages-container"></div>
+        </div>
+
+        <div class="input-area">
+            <div class="input-wrapper">
+                <button class="attach-btn">
+                    <i class="bi bi-paperclip"></i>
+                </button>
+                <textarea 
+                    id="messageInput" 
+                    placeholder="Digite sua mensagem ou anexe seu currículo..." 
+                    rows="1"
+                ></textarea>
+                <button class="send-btn" onclick="sendMessage()">
+                    <i class="bi bi-send-fill"></i>
+                </button>
+            </div>
+            <div id="filePreview" class="file-preview" style="display: none;">
+                <div class="file-info">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <span id="fileName"></span>
+                </div>
+                <button class="remove-file" onclick="removeFile()">
+                    <i class="bi bi-x"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/demo.js"></script>
+</body>
+</html>
