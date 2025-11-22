@@ -71,6 +71,7 @@ async function sendMessage() {
     
     await addMessage(textToSend, 'user');
     input.value = '';
+    document.getElementById('filePreview').style.display = 'none';
     
     tokensAvailable.classList.add('token-consume');
     await animateTokenDecrement(tokensAvailable, currentTokens, currentTokens - 50, 1500);
