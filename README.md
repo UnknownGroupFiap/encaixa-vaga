@@ -10,7 +10,7 @@ e culturalmente com seu perfil.
 A solução integra dados de múltiplas fontes, como LinkedIn, sites corporativos e portais de emprego - oferecendo uma
 experiência personalizada, rápida e eficiente.
 
-## Demonstração Visyal
+## Demonstração Visual
 
 [![Demo no YouTube](https://img.youtube.com/vi/4WL75ZqrF8E/hqdefault.jpg)](https://www.youtube.com/watch?v=4WL75ZqrF8E)
 
