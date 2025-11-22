@@ -47,10 +47,12 @@ const guideSteps = [
 ];
 
 function scrollToBottom() {
-    const chatBox = document.querySelector('.chat-box');
-    if (chatBox) {
-        chatBox.scrollTop = chatBox.scrollHeight;
-    }
+    setTimeout(() => {
+        const container = document.getElementById('messagesContainer');
+        if (container) {
+            container.scrollTop = container.scrollHeight;
+        }
+    }, 100);
 }
 
 function addMessage(text, sender, delay = 0) {
@@ -99,7 +101,6 @@ async function typeMessage(text = 'Busco vagas remotas na área de programação
     
     for (let i = 0; i <= text.length; i++) {
         input.value = text.substring(0, i);
-        // Auto-resize textarea
         input.style.height = 'auto';
         input.style.height = input.scrollHeight + 'px';
         await new Promise(resolve => setTimeout(resolve, speed));
@@ -194,17 +195,32 @@ function showModal(step) {
         modal.classList.add('with-blur');
     }
     
-    const position = currentStep.position || 'center';
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    let position = currentStep.position || 'center';
+    if (isMobile) position = 'center';
     modalBox.setAttribute('data-position', position);
-    
+
     if (currentStep.highlightElement) {
         setTimeout(() => {
-            highlightElement(currentStep.highlightElement);
-            positionModalNearElement(modalBox, currentStep.highlightElement, position);
+            if (isMobile) {
+                removeHighlight();
+                modalBox.style.top = '50%';
+                modalBox.style.left = '50%';
+                modalBox.style.right = 'auto';
+                modalBox.style.transform = 'translate(-50%, -50%)';
+            } else {
+                highlightElement(currentStep.highlightElement);
+                positionModalNearElement(modalBox, currentStep.highlightElement, position);
+            }
         }, 100);
     } else {
         removeHighlight();
-        if (position === 'result-side') {
+        if (isMobile) {
+            modalBox.style.top = '50%';
+            modalBox.style.left = '50%';
+            modalBox.style.right = 'auto';
+            modalBox.style.transform = 'translate(-50%, -50%)';
+        } else if (position === 'result-side') {
             modalBox.style.top = '50%';
             modalBox.style.right = '20px';
             modalBox.style.left = 'auto';
@@ -227,6 +243,13 @@ function positionModalNearElement(modal, selector, position) {
     const element = document.querySelector(selector);
     if (!element) return;
     
+    if (window.matchMedia('(max-width: 768px)').matches) {
+        modal.style.top = '50%';
+        modal.style.left = '50%';
+        modal.style.transform = 'translate(-50%, -50%)';
+        return;
+    }
+
     const rect = element.getBoundingClientRect();
     const modalRect = modal.getBoundingClientRect();
     const padding = 20;
@@ -421,7 +444,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 modal.classList.add('with-blur');
                 guideModal.setAttribute('data-position', 'center');
                 
-                // Limpar estilos inline para usar CSS
                 guideModal.style.top = '';
                 guideModal.style.left = '';
                 guideModal.style.right = '';
