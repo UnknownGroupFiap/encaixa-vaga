@@ -34,7 +34,7 @@
             
             make-zip() {
               echo "Gerando ZIP do projeto..."
-              zip -r Encaixa Vaga.zip index.html src/ public/ entrega.txt
+              zip -r Encaixa Vaga.zip index.html src/ public/ integrantes.txt
               echo "ZIP gerado: Encaixa Vaga.zip"
             }
             
